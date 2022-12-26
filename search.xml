@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Centos7.4 安装</title>
+    <url>/2022/12/26/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h2 id="Centos7-4-安装"><a href="#Centos7-4-安装" class="headerlink" title="Centos7.4 安装"></a>Centos7.4 安装</h2><span id="more"></span>
+
+
+
+<h3 id="一、镜像地址"><a href="#一、镜像地址" class="headerlink" title="一、镜像地址"></a>一、镜像地址</h3><h5 id="（1）CentOS官网下载"><a href="#（1）CentOS官网下载" class="headerlink" title="（1）CentOS官网下载"></a>（1）CentOS官网下载</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://vault.centos.org/</span><br></pre></td></tr></table></figure>
+
+<p>①在官网下载页面地址下拉找到7.4.1708&#x2F;选项并单击进入</p>
+<p><img src="https://img-blog.csdnimg.cn/bdb27fac1615466fbba03026d8509e60.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>②找到isos&#x2F;选项并单击进入</p>
+<p><img src="https://img-blog.csdnimg.cn/76a4c590fc5f4908aca8535779e62cfb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>③进入页面后，可以看到x86_64&#x2F;选项并单击进入</p>
+<p><img src="https://img-blog.csdnimg.cn/f8a12411d4254cca8dce40598e06aab8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>④在打开的界面中找到CentOS-7-x86_64-DVD-1708.iso并点击下载</p>
+<p><img src="https://img-blog.csdnimg.cn/13afd88cfdcf431c9249504c3027d36d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>以下针对各个版本的ISO镜像文件，进行一一说明：</p>
+<p>DVD ISO 标准安装版，推荐使用<br>Everything ISO 对完整版安装盘的软件进行补充<br>Minimal ISO 精简版，自带的软件最少<br>CentOS-7.x-1406-x86_64-DVD.iso 标准安装版<br>CentOS-7.x-1406-x86_64-NetInstall.iso 网络安装镜像<br>CentOS-7.x-1406-x86_64-Everything.iso 对完整版安装盘的软件进行补充，集成所有软件<br>CentOS-7.x-1406-x86_64-GnomeLive.iso GNOME桌面版<br>CentOS-7.x-1406-x86_64-KdeLive.iso KDE桌面版<br>CentOS-7.x-1406-x86_64-livecd.iso 光盘上运行的系统，类拟于Windows<br>PE<br>CentOS-7.x-x86_64-Minimal-1503-01.iso 精简版，自带的软件最少</p>
+<h5 id="（2）阿里巴巴开源镜像站点"><a href="#（2）阿里巴巴开源镜像站点" class="headerlink" title="（2）阿里巴巴开源镜像站点"></a>（2）阿里巴巴开源镜像站点</h5><p><a href="https://developer.aliyun.com/mirror/">https://developer.aliyun.com/mirror/</a></p>
+<p>①进入阿里巴巴开源镜像网站点击镜像列表里的Centos</p>
+<p><img src="https://img-blog.csdnimg.cn/477dfe44e71346d28edf070ae96d96d4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>②找到Centos镜像简介中的下载地址选择第二个网址</p>
+<p><img src="https://img-blog.csdnimg.cn/ff8fe52e1ba54fe9b4bd2c780813e198.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>③下拉列表找到7.4.7028&#x2F;选项并点击进入</p>
+<p><img src="https://img-blog.csdnimg.cn/cc0605dd92d746a694384e9bc00e4ab8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>④找到列表中的isos&#x2F;选项并点击进入</p>
+<p><img src="https://img-blog.csdnimg.cn/aa36470e8b254e489b2366017f61116f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>⑤找到X86_64&#x2F;选项并单击进入</p>
+<p><img src="https://img-blog.csdnimg.cn/396e4ae0bb494b08a2e89f348f6506ec.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>⑥找到CentOS-7-x86_64-DVD-1708.iso选项点击并开始下载</p>
+<p><img src="https://img-blog.csdnimg.cn/f30fcd1ebfb04462a79ce40754f49063.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>以下针对各个版本的ISO镜像文件，进行一一说明：</p>
+<p>DVD ISO 标准安装版，推荐使用<br>Everything ISO 对完整版安装盘的软件进行补充<br>Minimal ISO 精简版，自带的软件最少<br>CentOS-7.x-1406-x86_64-DVD.iso 标准安装版<br>CentOS-7.x-1406-x86_64-NetInstall.iso 网络安装镜像<br>CentOS-7.x-1406-x86_64-Everything.iso 对完整版安装盘的软件进行补充，集成所有软件<br>CentOS-7.x-1406-x86_64-GnomeLive.iso GNOME桌面版<br>CentOS-7.x-1406-x86_64-KdeLive.iso KDE桌面版<br>CentOS-7.x-1406-x86_64-livecd.iso 光盘上运行的系统，类拟于Windows<br>PE<br>CentOS-7.x-x86_64-Minimal-1503-01.iso 精简版，自带的软件最少</p>
+<h5 id="（3）网盘链接"><a href="#（3）网盘链接" class="headerlink" title="（3）网盘链接"></a>（3）网盘链接</h5><p>如果觉得下载比较繁琐，我已经提供了CentOS7.4的安装包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">链接：https://pan.baidu.com/s/1cRgNfZ5REf4LQMIyl5K3hQ</span><br><span class="line">提取码：lp6q</span><br></pre></td></tr></table></figure>
+
+<p>注意：网盘高速下载方法可以参考这篇文章：</p>
+<p><a href="http://moonstars.top/">http://moonstars.top/</a></p>
+<h3 id="二、虚拟机安装"><a href="#二、虚拟机安装" class="headerlink" title="二、虚拟机安装"></a>二、虚拟机安装</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://www.123pan.com/s/BP5A-Mooxh</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="三、创建虚拟机"><a href="#三、创建虚拟机" class="headerlink" title="三、创建虚拟机"></a>三、创建虚拟机</h3><h5 id="（1）创建新的虚拟机选项"><a href="#（1）创建新的虚拟机选项" class="headerlink" title="（1）创建新的虚拟机选项"></a>（1）创建新的虚拟机选项</h5><p><img src="/asserts/image-20221207194236036.png" alt="image-20221207194236036"></p>
+<h5 id="（2）选择配置类型"><a href="#（2）选择配置类型" class="headerlink" title="（2）选择配置类型"></a>（2）选择配置类型</h5><p>1、典型（新手）</p>
+<p>①选择稍后安装操作系统</p>
+<p><img src="/asserts/image-20221207194444629.png" alt="image-20221207194444629"></p>
+<p>②选择安装对应版本的linux系统</p>
+<p><img src="/asserts/image-20221207200544928.png" alt="image-20221207200544928"></p>
+<p>③为虚拟机命名并找到响应的文件位置</p>
+<p><img src="/asserts/image-20221207200738869.png" alt="image-20221207200738869"></p>
+<p>④设置磁盘空间（可动态调整其大小）</p>
+<p><img src="/asserts/image-20221207200836960.png" alt="image-20221207200836960"></p>
+<p>⑤按照个人需要配置电脑运行内存，我设置2G内存和1个2核处理器</p>
+<p><img src="/asserts/image-20221207201000313.png" alt="image-20221207201000313"></p>
+<p><img src="/asserts/image-20221207201124299.png" alt="image-20221207201124299"></p>
+<p>⑥启动虚拟机</p>
+<p><img src="/asserts/image-20221207201323637.png" alt="image-20221207201323637"></p>
+<p>⑦按照安装要求安装linux</p>
+<h3 id="四、虚拟机设置"><a href="#四、虚拟机设置" class="headerlink" title="四、虚拟机设置"></a>四、虚拟机设置</h3><p>①设置网卡连接</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /etc/sysconfig/network-scripts</span><br><span class="line">vi ifcfg-ens33</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">编辑</span><br><span class="line">OMBOOT=yes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/asserts/image-20221207214202071.png" alt="image-20221207214202071"></p>
+<p>②修改完成后重启网卡</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl restart network</span><br></pre></td></tr></table></figure>
+
+<p>③查看网卡设置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip addr</span><br><span class="line">nmcli</span><br></pre></td></tr></table></figure>
+
+<p><img src="/asserts/image-20221207214941606.png" alt="image-20221207214941606"></p>
+]]></content>
+      <categories>
+        <category>00Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+</search>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Centos7.4 安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos7.4 安装">
+<meta property="og:url" content="http://example.com/2022/12/26/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Centos7.4 安装">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/bdb27fac1615466fbba03026d8509e60.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/76a4c590fc5f4908aca8535779e62cfb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/f8a12411d4254cca8dce40598e06aab8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/13afd88cfdcf431c9249504c3027d36d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/477dfe44e71346d28edf070ae96d96d4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ff8fe52e1ba54fe9b4bd2c780813e198.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/cc0605dd92d746a694384e9bc00e4ab8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/aa36470e8b254e489b2366017f61116f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/396e4ae0bb494b08a2e89f348f6506ec.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/f30fcd1ebfb04462a79ce40754f49063.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="http://example.com/asserts/image-20221207194236036.png">
+<meta property="og:image" content="http://example.com/asserts/image-20221207194444629.png">
+<meta property="og:image" content="http://example.com/asserts/image-20221207200544928.png">
+<meta property="og:image" content="http://example.com/asserts/image-20221207200738869.png">
+<meta property="og:image" content="http://example.com/asserts/image-20221207200836960.png">
+<meta property="og:image" content="http://example.com/asserts/image-20221207201000313.png">
+<meta property="og:image" content="http://example.com/asserts/image-20221207201124299.png">
+<meta property="og:image" content="http://example.com/asserts/image-20221207201323637.png">
+<meta property="og:image" content="http://example.com/asserts/image-20221207214202071.png">
+<meta property="og:image" content="http://example.com/asserts/image-20221207214941606.png">
+<meta property="article:published_time" content="2022-12-26T06:46:12.000Z">
+<meta property="article:modified_time" content="2022-12-26T06:55:41.060Z">
+<meta property="article:author" content="qirongxin">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/bdb27fac1615466fbba03026d8509e60.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16">
+
+
+<link rel="canonical" href="http://example.com/2022/12/26/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/12/26/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/","path":"2022/12/26/虚拟机安装/","title":"Centos7.4 安装"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Centos7.4 安装 | 个人博客</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">个人博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Centos7-4-%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">Centos7.4 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E9%95%9C%E5%83%8F%E5%9C%B0%E5%9D%80"><span class="nav-number">1.1.</span> <span class="nav-text">一、镜像地址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%881%EF%BC%89CentOS%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">（1）CentOS官网下载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E5%BC%80%E6%BA%90%E9%95%9C%E5%83%8F%E7%AB%99%E7%82%B9"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">（2）阿里巴巴开源镜像站点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E7%BD%91%E7%9B%98%E9%93%BE%E6%8E%A5"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">（3）网盘链接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">二、虚拟机安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">1.3.</span> <span class="nav-text">三、创建虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%80%89%E9%A1%B9"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">（1）创建新的虚拟机选项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E9%80%89%E6%8B%A9%E9%85%8D%E7%BD%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">（2）选择配置类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.4.</span> <span class="nav-text">四、虚拟机设置</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">qirongxin</p>
+  <div class="site-description" itemprop="description">记录个人学习、工作生活</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/26/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qirongxin">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+      <meta itemprop="description" content="记录个人学习、工作生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Centos7.4 安装 | 个人博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Centos7.4 安装
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-12-26 14:46:12 / 修改时间：14:55:41" itemprop="dateCreated datePublished" datetime="2022-12-26T14:46:12+08:00">2022-12-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/00Linux/" itemprop="url" rel="index"><span itemprop="name">00Linux</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Centos7-4-安装"><a href="#Centos7-4-安装" class="headerlink" title="Centos7.4 安装"></a>Centos7.4 安装</h2><span id="more"></span>
+
+
+
+<h3 id="一、镜像地址"><a href="#一、镜像地址" class="headerlink" title="一、镜像地址"></a>一、镜像地址</h3><h5 id="（1）CentOS官网下载"><a href="#（1）CentOS官网下载" class="headerlink" title="（1）CentOS官网下载"></a>（1）CentOS官网下载</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://vault.centos.org/</span><br></pre></td></tr></table></figure>
+
+<p>①在官网下载页面地址下拉找到7.4.1708&#x2F;选项并单击进入</p>
+<p><img src="https://img-blog.csdnimg.cn/bdb27fac1615466fbba03026d8509e60.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>②找到isos&#x2F;选项并单击进入</p>
+<p><img src="https://img-blog.csdnimg.cn/76a4c590fc5f4908aca8535779e62cfb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>③进入页面后，可以看到x86_64&#x2F;选项并单击进入</p>
+<p><img src="https://img-blog.csdnimg.cn/f8a12411d4254cca8dce40598e06aab8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>④在打开的界面中找到CentOS-7-x86_64-DVD-1708.iso并点击下载</p>
+<p><img src="https://img-blog.csdnimg.cn/13afd88cfdcf431c9249504c3027d36d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>以下针对各个版本的ISO镜像文件，进行一一说明：</p>
+<p>DVD ISO 标准安装版，推荐使用<br>Everything ISO 对完整版安装盘的软件进行补充<br>Minimal ISO 精简版，自带的软件最少<br>CentOS-7.x-1406-x86_64-DVD.iso 标准安装版<br>CentOS-7.x-1406-x86_64-NetInstall.iso 网络安装镜像<br>CentOS-7.x-1406-x86_64-Everything.iso 对完整版安装盘的软件进行补充，集成所有软件<br>CentOS-7.x-1406-x86_64-GnomeLive.iso GNOME桌面版<br>CentOS-7.x-1406-x86_64-KdeLive.iso KDE桌面版<br>CentOS-7.x-1406-x86_64-livecd.iso 光盘上运行的系统，类拟于Windows<br>PE<br>CentOS-7.x-x86_64-Minimal-1503-01.iso 精简版，自带的软件最少</p>
+<h5 id="（2）阿里巴巴开源镜像站点"><a href="#（2）阿里巴巴开源镜像站点" class="headerlink" title="（2）阿里巴巴开源镜像站点"></a>（2）阿里巴巴开源镜像站点</h5><p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/">https://developer.aliyun.com/mirror/</a></p>
+<p>①进入阿里巴巴开源镜像网站点击镜像列表里的Centos</p>
+<p><img src="https://img-blog.csdnimg.cn/477dfe44e71346d28edf070ae96d96d4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>②找到Centos镜像简介中的下载地址选择第二个网址</p>
+<p><img src="https://img-blog.csdnimg.cn/ff8fe52e1ba54fe9b4bd2c780813e198.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>③下拉列表找到7.4.7028&#x2F;选项并点击进入</p>
+<p><img src="https://img-blog.csdnimg.cn/cc0605dd92d746a694384e9bc00e4ab8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>④找到列表中的isos&#x2F;选项并点击进入</p>
+<p><img src="https://img-blog.csdnimg.cn/aa36470e8b254e489b2366017f61116f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>⑤找到X86_64&#x2F;选项并单击进入</p>
+<p><img src="https://img-blog.csdnimg.cn/396e4ae0bb494b08a2e89f348f6506ec.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>⑥找到CentOS-7-x86_64-DVD-1708.iso选项点击并开始下载</p>
+<p><img src="https://img-blog.csdnimg.cn/f30fcd1ebfb04462a79ce40754f49063.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5oiR5LiO5L2g5LiO5pif6L6w,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>以下针对各个版本的ISO镜像文件，进行一一说明：</p>
+<p>DVD ISO 标准安装版，推荐使用<br>Everything ISO 对完整版安装盘的软件进行补充<br>Minimal ISO 精简版，自带的软件最少<br>CentOS-7.x-1406-x86_64-DVD.iso 标准安装版<br>CentOS-7.x-1406-x86_64-NetInstall.iso 网络安装镜像<br>CentOS-7.x-1406-x86_64-Everything.iso 对完整版安装盘的软件进行补充，集成所有软件<br>CentOS-7.x-1406-x86_64-GnomeLive.iso GNOME桌面版<br>CentOS-7.x-1406-x86_64-KdeLive.iso KDE桌面版<br>CentOS-7.x-1406-x86_64-livecd.iso 光盘上运行的系统，类拟于Windows<br>PE<br>CentOS-7.x-x86_64-Minimal-1503-01.iso 精简版，自带的软件最少</p>
+<h5 id="（3）网盘链接"><a href="#（3）网盘链接" class="headerlink" title="（3）网盘链接"></a>（3）网盘链接</h5><p>如果觉得下载比较繁琐，我已经提供了CentOS7.4的安装包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">链接：https://pan.baidu.com/s/1cRgNfZ5REf4LQMIyl5K3hQ</span><br><span class="line">提取码：lp6q</span><br></pre></td></tr></table></figure>
+
+<p>注意：网盘高速下载方法可以参考这篇文章：</p>
+<p><a target="_blank" rel="noopener" href="http://moonstars.top/">http://moonstars.top/</a></p>
+<h3 id="二、虚拟机安装"><a href="#二、虚拟机安装" class="headerlink" title="二、虚拟机安装"></a>二、虚拟机安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.123pan.com/s/BP5A-Mooxh</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="三、创建虚拟机"><a href="#三、创建虚拟机" class="headerlink" title="三、创建虚拟机"></a>三、创建虚拟机</h3><h5 id="（1）创建新的虚拟机选项"><a href="#（1）创建新的虚拟机选项" class="headerlink" title="（1）创建新的虚拟机选项"></a>（1）创建新的虚拟机选项</h5><p><img src="/asserts/image-20221207194236036.png" alt="image-20221207194236036"></p>
+<h5 id="（2）选择配置类型"><a href="#（2）选择配置类型" class="headerlink" title="（2）选择配置类型"></a>（2）选择配置类型</h5><p>1、典型（新手）</p>
+<p>①选择稍后安装操作系统</p>
+<p><img src="/asserts/image-20221207194444629.png" alt="image-20221207194444629"></p>
+<p>②选择安装对应版本的linux系统</p>
+<p><img src="/asserts/image-20221207200544928.png" alt="image-20221207200544928"></p>
+<p>③为虚拟机命名并找到响应的文件位置</p>
+<p><img src="/asserts/image-20221207200738869.png" alt="image-20221207200738869"></p>
+<p>④设置磁盘空间（可动态调整其大小）</p>
+<p><img src="/asserts/image-20221207200836960.png" alt="image-20221207200836960"></p>
+<p>⑤按照个人需要配置电脑运行内存，我设置2G内存和1个2核处理器</p>
+<p><img src="/asserts/image-20221207201000313.png" alt="image-20221207201000313"></p>
+<p><img src="/asserts/image-20221207201124299.png" alt="image-20221207201124299"></p>
+<p>⑥启动虚拟机</p>
+<p><img src="/asserts/image-20221207201323637.png" alt="image-20221207201323637"></p>
+<p>⑦按照安装要求安装linux</p>
+<h3 id="四、虚拟机设置"><a href="#四、虚拟机设置" class="headerlink" title="四、虚拟机设置"></a>四、虚拟机设置</h3><p>①设置网卡连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/sysconfig/network-scripts</span><br><span class="line">vi ifcfg-ens33</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">编辑</span><br><span class="line">OMBOOT=yes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/asserts/image-20221207214202071.png" alt="image-20221207214202071"></p>
+<p>②修改完成后重启网卡</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart network</span><br></pre></td></tr></table></figure>
+
+<p>③查看网卡设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br><span class="line">nmcli</span><br></pre></td></tr></table></figure>
+
+<p><img src="/asserts/image-20221207214941606.png" alt="image-20221207214941606"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qirongxin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
